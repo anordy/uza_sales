@@ -81,7 +81,7 @@ class _CartScreenState extends State<CartScreen> {
           child: Padding(
             padding: const EdgeInsets.only(top: 20.0),
             child: cart.storesCarts.length <= 0 || cart.storesCarts == null
-                ? SizedBox(
+                ? Container(
                     // color: Colors.blue,
                     width: Utils.displayWidth(context),
                     height: Utils.displayHeight(context),
@@ -89,7 +89,7 @@ class _CartScreenState extends State<CartScreen> {
                         child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                      const  SizedBox(
+                        SizedBox(
                           height: 30,
                         ),
                         CircleAvatar(
@@ -97,11 +97,11 @@ class _CartScreenState extends State<CartScreen> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Icon(
+                              Icon(
                                 Icons.storefront_outlined,
                                 color: Colors.grey,
                               ),
-                              const SizedBox(
+                              SizedBox(
                                 height: 5,
                               ),
                               Text(
@@ -122,14 +122,14 @@ class _CartScreenState extends State<CartScreen> {
                         padding: const EdgeInsets.only(left: 20.0),
                         child: Text(
                           AppLocalizations.of(context).cart.toUpperCase(),
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                       ),
                       SizedBox(
                         height: Utils.displayHeight(context) * 0.03,
                       ),
-                      SizedBox(
+                      Container(
                         height: Utils.displayHeight(context) * 0.6,
                         // color: Colors.grey,
                         child: ListView.builder(
@@ -140,7 +140,7 @@ class _CartScreenState extends State<CartScreen> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(
+                                    Container(
                                       height: 60,
                                       width: Utils.displayWidth(context),
                                       // color: Colors.blue,
@@ -154,12 +154,12 @@ class _CartScreenState extends State<CartScreen> {
                                             child: Text(
                                               cart.storesCarts[s]
                                                   .distributorName,
-                                              style: const TextStyle(
+                                              style: TextStyle(
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.w700),
                                             ),
                                           ),
-                                          const SizedBox(
+                                          SizedBox(
                                             height: 20,
                                           ),
                                           Padding(
@@ -218,7 +218,7 @@ class _CartScreenState extends State<CartScreen> {
                                       // var _index = cart
                                       //     .storesCarts[s].cartResponse
                                       //     .indexOf(item);
-                                      return SizedBox(
+                                      return Container(
                                           // color: Colors.lightBlue,
                                           height: Utils.displayHeight(context) *
                                               0.1,
@@ -228,8 +228,8 @@ class _CartScreenState extends State<CartScreen> {
                                           //})
                                           );
                                     }).toList()),
-                                    const Padding(
-                                      padding: EdgeInsets.only(
+                                    Padding(
+                                      padding: const EdgeInsets.only(
                                           left: 15.0,
                                           right: 10.0,
                                           top: 5.0,
@@ -244,7 +244,7 @@ class _CartScreenState extends State<CartScreen> {
                                           _targetOrder(
                                               initial: cart.storesCarts[s]
                                                   .minimumAmountPerOrder),
-                                          const SizedBox(
+                                          SizedBox(
                                             width: 20.0,
                                           ),
                                           Column(
@@ -253,13 +253,13 @@ class _CartScreenState extends State<CartScreen> {
                                             children: [
                                               Text(
                                                 "You have not reached minimum order of Tsh ${cart.storesCarts[s].minimumAmountPerOrder}",
-                                                style: const TextStyle(
+                                                style: TextStyle(
                                                     fontSize: 10,
                                                     color: Colors.black,
                                                     fontWeight:
                                                         FontWeight.w600),
                                               ),
-                                              const SizedBox(
+                                              SizedBox(
                                                 height: 5.0,
                                               ),
                                               TextButton(
@@ -300,8 +300,8 @@ class _CartScreenState extends State<CartScreen> {
                               );
                             }),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(
+                      Padding(
+                        padding: const EdgeInsets.only(
                             left: 15.0, right: 10.0, top: 10.0, bottom: 10.0),
                         child: Divider(color: Colors.black45),
                       ),
@@ -314,11 +314,11 @@ class _CartScreenState extends State<CartScreen> {
                                 text: TextSpan(children: <TextSpan>[
                               TextSpan(
                                   text: "Total".toUpperCase(),
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 18,
                                       fontWeight: FontWeight.w600)),
-                              const TextSpan(
+                              TextSpan(
                                   text: ' (VAT & Transport)',
                                   style: TextStyle(
                                       color: Colors.grey, fontSize: 12)),
@@ -340,7 +340,7 @@ class _CartScreenState extends State<CartScreen> {
                           ],
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 25,
                       ),
                       Padding(
@@ -363,7 +363,7 @@ class _CartScreenState extends State<CartScreen> {
                                 color: AppColor.base,
                                 size: 16,
                               ),
-                              const SizedBox(
+                              SizedBox(
                                 width: 3,
                               ),
                               Text(
@@ -377,7 +377,7 @@ class _CartScreenState extends State<CartScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 25,
                       ),
                       Padding(
@@ -397,7 +397,7 @@ class _CartScreenState extends State<CartScreen> {
                                 print("user not authenticated");
                                 showToastWidget(
                                   ToastWidget(
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.done,
                                         color: Colors.white,
                                         size: 15,
@@ -407,7 +407,7 @@ class _CartScreenState extends State<CartScreen> {
                                       color: AppColor.success,
                                       description:
                                           "Please Login in to continue shopping"),
-                                  duration: const Duration(seconds: 3),
+                                  duration: Duration(seconds: 3),
                                   position: ToastPosition.bottom,
                                 );
                                 pushNewScreen(
@@ -425,7 +425,7 @@ class _CartScreenState extends State<CartScreen> {
                                   .get_bill
                                   .toUpperCase(),
                               style:
-                                  const TextStyle(color: Colors.white, fontSize: 18),
+                                  TextStyle(color: Colors.white, fontSize: 18),
                             ),
                           ),
                         ),
@@ -439,7 +439,7 @@ class _CartScreenState extends State<CartScreen> {
   navigate(BuildContext context) {
     pushNewScreen(
       context,
-      screen: const OrderPage(),
+      screen: OrderPage(),
       withNavBar: true, // OPTIONAL VALUE. True by default.
       pageTransitionAnimation: PageTransitionAnimation.cupertino,
     );
@@ -448,7 +448,7 @@ class _CartScreenState extends State<CartScreen> {
 // ====== CART ITEMS LIST ====
   Widget _cartItemsList() {
     final cart = Provider.of<CartProvider>(context);
-    return SizedBox(
+    return Container(
         // color: Colors.lightBlue,
         height: Utils.displayHeight(context) * 0.2,
         child: ListView.builder(
@@ -467,7 +467,7 @@ class _CartScreenState extends State<CartScreen> {
 
 // ====== TARGET WIDGET  =======
   Widget _targetOrder({double initial}) {
-    return SizedBox(
+    return Container(
         height: 55.0,
         width: 55.0,
         child: SleekCircularSlider(
@@ -480,14 +480,14 @@ class _CartScreenState extends State<CartScreen> {
               angleRange: 360,
               infoProperties: InfoProperties(
                   mainLabelStyle:
-                      const TextStyle(color: const Color(0xFF292C34), fontSize: 12)),
+                      TextStyle(color: Color(0xFF292C34), fontSize: 12)),
               customWidths: CustomSliderWidths(
                 progressBarWidth: 5,
                 trackWidth: 4,
               ),
               customColors: CustomSliderColors(
                 progressBarColor: AppColor.preBase,
-                trackColor: const Color(0xFfE2E2E2),
+                trackColor: Color(0xFfE2E2E2),
                 hideShadow: true,
                 dynamicGradient: true,
                 dotColor: AppColor.preBase,
@@ -517,7 +517,7 @@ class _CartScreenState extends State<CartScreen> {
           width: Utils.displayWidth(context) * 0.2,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: const Color(0xFFC7D3DD))),
+              border: Border.all(color: Color(0xFFC7D3DD))),
           child: Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15.0),
             child: Row(
@@ -538,7 +538,7 @@ class _CartScreenState extends State<CartScreen> {
                         color: AppColor.base,
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 1,
                     ),
                     InkWell(

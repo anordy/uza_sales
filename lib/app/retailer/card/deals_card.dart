@@ -127,7 +127,6 @@ class DealsCard extends StatelessWidget {
                   ])),
                 ],
               ),
-              // ignore: prefer_const_constructors
               SizedBox(
                 height: 5,
               ),

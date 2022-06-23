@@ -14,9 +14,6 @@ import 'package:uza_sales/app/sales/model/route_model.dart';
 import 'package:uza_sales/app/sales/provider/visibility_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uza_sales/app/sales/screen/myRoute_screen.dart';
-import 'package:uza_sales/app/sales/widget/custom_dialog.dart';
-
-import '../booker_home.dart';
 
 class PosVisibilityPage extends StatefulWidget {
   final SalesStore stores;
