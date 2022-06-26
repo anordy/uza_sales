@@ -4,8 +4,7 @@ import 'package:oktoast/oktoast.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
 import 'package:uza_sales/app/retailer/pages/auth/welcome_page.dart';
-import 'package:uza_sales/app/retailer/screen/retailer_home_screen.dart.dart';
-import 'package:uza_sales/app/retailer/pages/order_page.dart';
+
 import 'package:uza_sales/app/retailer/provider/cart_provider.dart';
 import 'package:uza_sales/app/retailer/provider/order_provider.dart';
 import 'package:uza_sales/app/retailer/widget/cart/cart_item_list.dart';
@@ -16,6 +15,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:uza_sales/app/sales/orders/create_sales_order.dart';
+import 'package:uza_sales/app/sales/pages/sales_home.dart';
 
 class SaleCartScreen extends StatefulWidget {
   const SaleCartScreen({Key key}) : super(key: key);
@@ -200,7 +200,7 @@ class _SaleCartScreenState extends State<SaleCartScreen> {
                           onTap: () {
                             pushNewScreen(
                               context,
-                              screen: RetailerHomeScreen(),
+                              screen: SalesHome(),
                               withNavBar:
                                   true, // OPTIONAL VALUE. True by default.
                               pageTransitionAnimation:

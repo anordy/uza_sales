@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:provider/provider.dart';
 import 'package:uza_sales/app/retailer/widget/colors.dart';
-import 'package:uza_sales/app/retailer/widget/loading.dart';
 import 'package:uza_sales/app/sales/items/target_items.dart';
 import 'package:uza_sales/app/sales/provider/target_provider.dart';
 import 'package:uza_sales/app/sales/widget/custom_slider_thumb_circle.dart';
@@ -21,7 +19,6 @@ class BookerTargetScreen extends StatefulWidget {
       this.max = 100,
       this.min = 0,
       this.fullWidth = false});
-
   @override
   _BookerTargetScreenState createState() => _BookerTargetScreenState();
 }
@@ -41,7 +38,6 @@ class _BookerTargetScreenState extends State<BookerTargetScreen> {
   void initState() {
     super.initState();
     _month.text = Jiffy(DateTime.now()).MMMM;
-
     print("=========   this month ${_month.text}  ");
   }
 
@@ -69,6 +65,7 @@ class _BookerTargetScreenState extends State<BookerTargetScreen> {
                               //       Navigator.of(context).pop();
                               //     }),
                               // SizedBox(width: 2,),
+
                               Text(
                                 AppLocalizations.of(context).my_target,
                                 style: TextStyle(
@@ -165,7 +162,7 @@ class _BookerTargetScreenState extends State<BookerTargetScreen> {
                   target.isTarget
                       ? Text("Tsh 0")
                       : Text(
-                          "Tsh ${formatter.format(target.availableTarget.revenue.sales)} / Tsh ${formatter.format(target.availableTarget.revenue.target)}",
+                          "Tsh ${formatter.format(target.availableTarget.revenue.sales ?? 0)} / Tsh ${formatter.format(target.availableTarget.revenue.target ?? 0)}",
                           style: TextStyle(
                             fontSize: 14,
                             color: AppColor.title,

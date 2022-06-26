@@ -4,8 +4,8 @@ import 'package:oktoast/oktoast.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
 import 'package:uza_sales/app/orderBooker/orders/booker_sales_order.dart';
+import 'package:uza_sales/app/orderBooker/pages/booker_home.dart';
 import 'package:uza_sales/app/retailer/pages/auth/welcome_page.dart';
-import 'package:uza_sales/app/retailer/screen/retailer_home_screen.dart.dart';
 import 'package:uza_sales/app/retailer/provider/cart_provider.dart';
 import 'package:uza_sales/app/retailer/provider/order_provider.dart';
 import 'package:uza_sales/app/retailer/widget/cart/cart_item_list.dart';
@@ -220,7 +220,7 @@ class _BookerCartScreenState extends State<BookerCartScreen> {
                           onTap: () {
                             pushNewScreen(
                               context,
-                              screen: RetailerHomeScreen(),
+                              screen: BookerHome(),
                               withNavBar:
                                   true, // OPTIONAL VALUE. True by default.
                               pageTransitionAnimation:

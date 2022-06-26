@@ -5,10 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:uza_sales/app/orderBooker/pages/booker_home.dart';
 import 'package:uza_sales/app/retailer/network/api.dart';
 import 'package:uza_sales/app/retailer/pages/auth/welcome_page.dart';
-import 'package:uza_sales/app/retailer/pages/retailer_create_shop.dart.dart';
-import 'package:uza_sales/app/retailer/pages/home_page.dart';
-import 'package:uza_sales/app/retailer/widget/colors.dart';
-import 'package:uza_sales/app/retailer/widget/utils.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uza_sales/app/sales/pages/sales_home.dart';
@@ -47,8 +43,8 @@ class _SplashScreen extends State<SplashScreen> {
         isRetailer) {
       print("======= isRetailer ======");
       await sendFirebaseToken(firebaseToken);
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
+      // Navigator.pushReplacement(
+      //     context, MaterialPageRoute(builder: (context) => HomePage()));
     } else if (isLoggedIn != null &&
         isLoggedIn &&
         isOrderBooker != null &&

@@ -9,12 +9,12 @@ import 'package:uza_sales/app/retailer/card/product_card.dart';
 import 'package:uza_sales/app/retailer/model/product_model.dart';
 import 'package:uza_sales/app/retailer/provider/cart_provider.dart';
 import 'package:uza_sales/app/retailer/provider/category_provider.dart';
-import 'package:uza_sales/app/retailer/screen/cart_screen.dart';
 import 'package:uza_sales/app/retailer/shimmers/shimmer_products.dart';
 import 'package:uza_sales/app/retailer/widget/cart_dialog.dart';
 import 'package:uza_sales/app/retailer/widget/colors.dart';
 import 'package:uza_sales/app/retailer/widget/utils.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uza_sales/app/sales/screen/sales_cart.dart';
 
 class AdsProducts extends StatefulWidget {
   const AdsProducts({Key key}) : super(key: key);
@@ -484,7 +484,7 @@ class _AdsProductsState extends State<AdsProducts> {
                     buyNow: () {
                       pushNewScreen(
                         context,
-                        screen: CartScreen(),
+                        screen: SaleCartScreen(),
                         withNavBar: true, // OPTIONAL VALUE. True by default.
                         pageTransitionAnimation:
                             PageTransitionAnimation.cupertino,

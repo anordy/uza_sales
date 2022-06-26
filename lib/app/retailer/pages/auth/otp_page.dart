@@ -4,7 +4,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
-import 'package:uza_sales/app/retailer/pages/retailer_create_shop.dart.dart';
 import 'package:uza_sales/app/retailer/provider/auth_provider.dart';
 import 'package:uza_sales/app/retailer/widget/colors.dart';
 import 'package:uza_sales/app/retailer/widget/loading.dart';
@@ -13,7 +12,6 @@ import 'package:uza_sales/app/retailer/widget/utils.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../home_page.dart';
 
 class OtpPage extends StatefulWidget {
   final String phone;
@@ -268,11 +266,11 @@ class _OtpPageState extends State<OtpPage> {
                                       if (!value)
                                         {
                                           print("*****  verify otp   ******"),
-                                          Navigator.pushReplacement(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      CreateShop()))
+                                          // Navigator.pushReplacement(
+                                          //     context,
+                                          //     MaterialPageRoute(
+                                          //         builder: (context) =>
+                                          //             CreateShop()))
                                         }
                                       else
                                         {

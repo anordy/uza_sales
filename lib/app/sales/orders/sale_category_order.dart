@@ -1,5 +1,4 @@
-import 'package:carousel_slider/carousel_controller.dart';
-import 'package:carousel_slider/carousel_options.dart';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -11,7 +10,6 @@ import 'package:uza_sales/app/retailer/card/product_card.dart';
 import 'package:uza_sales/app/retailer/model/category_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uza_sales/app/retailer/model/product_model.dart';
-import 'package:uza_sales/app/retailer/pages/ads_products.dart';
 import 'package:uza_sales/app/retailer/provider/ads_provider.dart';
 import 'package:uza_sales/app/retailer/provider/cart_provider.dart';
 import 'package:uza_sales/app/retailer/provider/category_provider.dart';
@@ -20,6 +18,8 @@ import 'package:uza_sales/app/retailer/widget/cart_dialog.dart';
 import 'package:uza_sales/app/retailer/widget/colors.dart';
 import 'package:uza_sales/app/retailer/widget/utils.dart';
 import 'package:uza_sales/app/sales/orders/show_category.dart';
+
+import '../../retailer/pages/ads_products.dart';
 
 class SaleCategoryOrder extends StatefulWidget {
   @override

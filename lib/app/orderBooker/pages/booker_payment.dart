@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:uza_sales/app/orderBooker/orders/order_booker_history.dart';
-import 'package:uza_sales/app/retailer/screen/retailer_home_screen.dart.dart';
+import 'package:uza_sales/app/orderBooker/pages/booker_home.dart';
 import 'package:uza_sales/app/retailer/widget/colors.dart';
 import 'package:uza_sales/app/retailer/widget/utils.dart';
 import 'package:uza_sales/app/sales/orders/order_history.dart';
@@ -111,7 +111,7 @@ class BookerPaymentPage extends StatelessWidget {
               onPressed: () {
                 pushNewScreen(
                   context,
-                  screen: RetailerHomeScreen(),
+                  screen: BookerHome(),
                   withNavBar: true, // OPTIONAL VALUE. True by default.
                   pageTransitionAnimation: PageTransitionAnimation.cupertino,
                 );

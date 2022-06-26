@@ -5,11 +5,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
 import 'package:uza_sales/app/orderBooker/orders/order_booker_history.dart';
-import 'package:uza_sales/app/orderBooker/pages/booker_create_shop.dart';
 import 'package:uza_sales/app/orderBooker/pages/stock_availability.dart';
 import 'package:uza_sales/app/orderBooker/screen/booker_route_screen.dart';
+import 'package:uza_sales/app/orderBooker/screen/home_summary_screen.dart';
 import 'package:uza_sales/app/orderBooker/widget/booker_redeem_dialog.dart';
 import 'package:uza_sales/app/retailer/pages/auth/welcome_page.dart';
 import 'package:uza_sales/app/retailer/widget/colors.dart';
@@ -19,13 +18,9 @@ import 'package:uza_sales/app/retailer/widget/toast_widget.dart';
 import 'package:uza_sales/app/retailer/widget/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:uza_sales/app/sales/orders/order_history.dart';
 import 'package:uza_sales/app/sales/pages/sales_notification.dart';
-import 'package:uza_sales/app/sales/screen/myRoute_screen.dart';
-import 'package:uza_sales/app/sales/screen/myStock_screen.dart';
 import 'package:uza_sales/app/sales/screen/myVisit_screen.dart';
 
-import '../../sales/provider/stock_availability_provider.dart';
 
 class BookerProfileScreen extends StatefulWidget {
   const BookerProfileScreen({Key key}) : super(key: key);
@@ -401,7 +396,7 @@ class _BookerProfileScreenState extends State<BookerProfileScreen> {
                           onTap: () {
                             pushNewScreen(
                               context,
-                              screen: MyVisitScreen(),
+                              screen: HomeSummaryScreen(),
                               withNavBar:
                                   true, // OPTIONAL VALUE. True by default.
                               pageTransitionAnimation:
@@ -423,7 +418,7 @@ class _BookerProfileScreenState extends State<BookerProfileScreen> {
                                     color: Color(0xFF525252),
                                   )),
                               title: Text(
-                                AppLocalizations.of(context).visit_summary,
+                                "Home Summary",
                                 style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400,

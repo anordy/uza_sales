@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:uza_sales/app/orderBooker/model/booker_order_model.dart';
 import 'package:uza_sales/app/retailer/network/api.dart';
 import 'package:http/http.dart' as http;
 import 'package:uza_sales/app/sales/model/sales_order_model.dart';
@@ -136,7 +137,7 @@ class BookerOrderProvider extends ChangeNotifier {
     print("=====================================================");
     try {
       if (response.statusCode == 200) {
-        final result = salesOrderFromJson(response.body);
+        final result = bookerOrderFromJson(response.body);
         print("******** response from sales  create order *****");
         print(result);
         print("****************");

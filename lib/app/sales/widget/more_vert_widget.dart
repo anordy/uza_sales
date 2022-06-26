@@ -4,7 +4,6 @@ import 'package:oktoast/oktoast.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:uza_sales/app/retailer/pages/edit_retailer_shop.dart';
 import 'package:uza_sales/app/retailer/widget/colors.dart';
 import 'package:uza_sales/app/retailer/widget/toast_widget.dart';
 import 'package:uza_sales/app/sales/model/route_model.dart';

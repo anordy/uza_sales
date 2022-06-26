@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uza_sales/app/retailer/button/custom_buton.dart';
 import 'package:uza_sales/app/retailer/pages/auth/login_page.dart';
-import 'package:uza_sales/app/retailer/pages/home_page.dart';
 import 'package:uza_sales/app/retailer/widget/colors.dart';
 import 'package:uza_sales/app/retailer/widget/utils.dart';
 

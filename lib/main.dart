@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:uza_sales/app/app.dart';
 import 'package:uza_sales/app/orderBooker/provider/booker_order_provider.dart';
 import 'package:uza_sales/app/orderBooker/provider/stock_availability_provider.dart';
+import 'package:uza_sales/app/orderBooker/provider/booker_target_provider.dart';
 import 'package:uza_sales/app/retailer/provider/ads_provider.dart';
 import 'package:uza_sales/app/retailer/provider/auth_provider.dart';
 import 'package:uza_sales/app/retailer/provider/cart_provider.dart';
@@ -55,6 +56,7 @@ Future<void> main() async {
     ChangeNotifierProvider(create: (_) => RouteProvider()),
     ChangeNotifierProvider(create: (_) => CategoryBookerProvider()),
     ChangeNotifierProvider(create: (_) => TargetProvider()),
+    ChangeNotifierProvider(create: (_) => BookerTargetProvider()),
     ChangeNotifierProvider(create: (_) => VisitProvider()),
     ChangeNotifierProvider(create: (_) => SalesOrderProvider()),
     ChangeNotifierProvider(create: (_) => BookerOrderProvider()),

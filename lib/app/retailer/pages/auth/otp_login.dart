@@ -14,7 +14,6 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uza_sales/app/sales/pages/sales_home.dart';
 
-import '../home_page.dart';
 
 class OtpLogin extends StatefulWidget {
   final String phone;
@@ -299,11 +298,11 @@ class _OtpLoginState extends State<OtpLogin> {
                                             {
                                               print(
                                                   "you are signed in as retailer"),
-                                              Navigator.pushReplacement(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          HomePage())),
+                                              // Navigator.pushReplacement(
+                                              //     context,
+                                              //     MaterialPageRoute(
+                                              //         builder: (context) =>
+                                              //             HomePage())),
                                             }
                                           else if (_authProvider
                                                   .isOrderBooker ==

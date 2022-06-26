@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_place_picker/google_maps_place_picker.dart';
 import 'package:oktoast/oktoast.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
 import 'package:uza_sales/app/retailer/provider/auth_provider.dart';
-import 'package:uza_sales/app/retailer/screen/accounts_screen.dart';
 import 'package:uza_sales/app/retailer/widget/colors.dart';
 import 'package:uza_sales/app/retailer/button/custom_buton.dart';
 import 'package:uza_sales/app/retailer/widget/toast_widget.dart';
@@ -13,7 +11,6 @@ import 'package:uza_sales/app/retailer/widget/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uza_sales/app/sales/model/route_model.dart';
-import 'package:uza_sales/app/sales/pages/sales_home.dart';
 
 class EditRoutesStore extends StatefulWidget {
   final SalesStore stores;

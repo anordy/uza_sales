@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-import 'package:uza_sales/app/retailer/screen/retailer_home_screen.dart.dart';
-import 'package:uza_sales/app/retailer/pages/home_page.dart';
-import 'package:uza_sales/app/retailer/screen/orders_screen.dart';
 import 'package:uza_sales/app/retailer/widget/colors.dart';
 import 'package:uza_sales/app/retailer/widget/utils.dart';
 import 'package:uza_sales/app/sales/orders/order_history.dart';
+import 'package:uza_sales/app/sales/pages/sales_home.dart';
 
 class SalesPaymentPage extends StatelessWidget {
   final String deliveryDate;
@@ -112,7 +110,7 @@ class SalesPaymentPage extends StatelessWidget {
               onPressed: () {
                 pushNewScreen(
                   context,
-                  screen: RetailerHomeScreen(),
+                  screen: SalesHome(),
                   withNavBar: true, // OPTIONAL VALUE. True by default.
                   pageTransitionAnimation: PageTransitionAnimation.cupertino,
                 );

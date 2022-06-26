@@ -6,7 +6,6 @@ import 'package:uza_sales/app/retailer/pages/auth/otp_page.dart';
 import 'package:uza_sales/app/retailer/provider/auth_provider.dart';
 import 'package:uza_sales/app/retailer/widget/colors.dart';
 import 'package:uza_sales/app/retailer/widget/loading.dart';
-import 'package:uza_sales/app/retailer/widget/text_field.dart';
 import 'package:uza_sales/app/retailer/widget/toast_widget.dart';
 import 'package:uza_sales/app/retailer/widget/utils.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

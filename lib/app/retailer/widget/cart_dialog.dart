@@ -5,9 +5,9 @@ import 'package:oktoast/oktoast.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:uza_sales/app/orderBooker/model/sales_order_model.dart';
 import 'package:uza_sales/app/retailer/model/product_model.dart';
 import 'package:uza_sales/app/retailer/pages/auth/welcome_page.dart';
-import 'package:uza_sales/app/retailer/pages/order_page.dart';
 import 'package:uza_sales/app/retailer/provider/cart_provider.dart';
 import 'package:uza_sales/app/retailer/widget/signout-toast.dart';
 import 'package:uza_sales/app/retailer/widget/toast_widget.dart';
@@ -504,11 +504,11 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
   }
 
   navigate(BuildContext context) {
-    pushNewScreen(
-      context,
-      screen: OrderPage(),
-      withNavBar: true, // OPTIONAL VALUE. True by default.
-      pageTransitionAnimation: PageTransitionAnimation.cupertino,
-    );
+    // pushNewScreen(
+    //   context,
+    //   screen: SalesOrder(),
+    //   withNavBar: true, // OPTIONAL VALUE. True by default.
+    //   pageTransitionAnimation: PageTransitionAnimation.cupertino,
+    // );
   }
 }
