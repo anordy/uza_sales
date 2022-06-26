@@ -408,7 +408,7 @@ class AuthProvider extends ChangeNotifier {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer $accessToken'
     };
-    var url = Uri.parse(api + "store/save");
+    var url = Uri.parse(api + "order_booker/save_store");
     final response = await http.post(url,
         headers: <String, String>{
           "Accept": "application/json",

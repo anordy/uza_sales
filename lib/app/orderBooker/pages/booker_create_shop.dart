@@ -477,7 +477,7 @@ class _BookerCreateShopState extends State<BookerCreateShop>
                         hintText: "255 *** *** ***",
                         border: InputBorder.none,
                       ),
-                      validator: (value) {
+                      validator: (value){
                         if (value.isEmpty) {
                           return "* Required";
                         } else
