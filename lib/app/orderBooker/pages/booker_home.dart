@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:uza_sales/app/orderBooker/model/booker_order_model.dart';
+import 'package:uza_sales/app/orderBooker/orders/booker_category_order.dart';
 import 'package:uza_sales/app/orderBooker/screen/booker_target_screen.dart';
 import 'package:uza_sales/app/orderBooker/screen/booker_cart_screen.dart';
 import 'package:uza_sales/app/orderBooker/screen/booker_profile_screen_.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:uza_sales/app/orderBooker/screen/home_summary_screen.dart';
 import 'package:uza_sales/app/retailer/widget/colors.dart';
-import 'package:uza_sales/app/sales/screen/sales_cart.dart';
 
 class BookerHome extends StatefulWidget {
   @override
@@ -75,21 +77,11 @@ class _BookerHome extends State<BookerHome> {
       ),
     );
   }
-
-  // signIn(BuildContext context) {
-  //   pushNewScreen(
-  //       context,
-  //       screen: MainScreen(),
-  //       withNavBar: true, // OPTIONAL VALUE. True by default.
-  //       pageTransitionAnimation: PageTransitionAnimation.cupertino,
-  //   );
-  // }
-
   List<Widget> _buildScreens() {
     return [
-      BookerTargetScreen(),
+      HomeSummaryScreen(),
+      BookerCategoryOrder(),
       BookerCartScreen(),
-      // BookerPOSMScreen(),
       BookerProfileScreen()
     ];
   }
@@ -103,18 +95,18 @@ class _BookerHome extends State<BookerHome> {
         inactiveColorPrimary: Color(0xFF9586A8),
         //contentPadding: 30
       ),
+       PersistentBottomNavBarItem(
+        icon: Icon(Icons.card_giftcard_outlined),
+        title: ("Order"),
+        activeColorPrimary: AppColor.preBase,
+        inactiveColorPrimary: Color(0xFF9586A8),
+      ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.shopping_cart),
         title: ("Cart"),
         activeColorPrimary: AppColor.preBase,
         inactiveColorPrimary: Color(0xFF9586A8),
-      ),
-      //  PersistentBottomNavBarItem(
-      //   icon: Icon(CupertinoIcons.home),
-      //   title: ("POSM"),
-      //   activeColorPrimary: AppColor.preBase,
-      //   inactiveColorPrimary: Color(0xFF9586A8),
-      // ),
+      ), 
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.person),
         title: ("Profile"),

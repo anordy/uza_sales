@@ -5,8 +5,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uza_sales/app/orderBooker/map/bymap_list.dart';
+import 'package:uza_sales/app/orderBooker/orders/booker_category_order.dart';
 import 'package:uza_sales/app/orderBooker/orders/order_booker_history.dart';
+import 'package:uza_sales/app/orderBooker/pages/booker_home.dart';
+import 'package:uza_sales/app/orderBooker/pages/booker_notification_screen.dart';
 import 'package:uza_sales/app/orderBooker/pages/stock_availability.dart';
+import 'package:uza_sales/app/orderBooker/screen/booker_cart_screen.dart';
 import 'package:uza_sales/app/orderBooker/screen/booker_route_screen.dart';
 import 'package:uza_sales/app/orderBooker/screen/home_summary_screen.dart';
 import 'package:uza_sales/app/orderBooker/widget/booker_redeem_dialog.dart';
@@ -19,8 +24,7 @@ import 'package:uza_sales/app/retailer/widget/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uza_sales/app/sales/pages/sales_notification.dart';
-import 'package:uza_sales/app/sales/screen/myVisit_screen.dart';
-
+import 'package:uza_sales/app/sales/screen/myRoute_screen.dart';
 
 class BookerProfileScreen extends StatefulWidget {
   const BookerProfileScreen({Key key}) : super(key: key);
@@ -218,221 +222,48 @@ class _BookerProfileScreenState extends State<BookerProfileScreen> {
                       SizedBox(
                         height: 10,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                        child: Container(
-                          height: 55,
-                          width: Utils.displayWidth(context),
-                          decoration: BoxDecoration(
-                            color: AppColor.bgScreen,
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          child: ListTile(
-                            leading: CircleAvatar(
-                                backgroundColor: AppColor.bgScreen2,
-                                child: Icon(
-                                  Icons.notifications,
-                                  color: Color(0xFF525252),
-                                )),
-                            title: Text(
-                              AppLocalizations.of(context).notifications,
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xFF525252)),
-                            ),
-                            trailing: CircleAvatar(
-                                radius: 15,
-                                backgroundColor: AppColor.preBase,
-                                child: Text(
-                                  "5",
-                                  style: TextStyle(color: Colors.white),
-                                )),
-                            onTap: () {
-                              pushNewScreen(
-                                context,
-                                screen: SalesNotificationScreen(),
-                                withNavBar:
-                                    true, // OPTIONAL VALUE. True by default.
-                                pageTransitionAnimation:
-                                    PageTransitionAnimation.cupertino,
-                              );
-                            },
-                          ),
-                        ),
-                      ),
+                      profileTilesWidget(
+                          leadingIcon: Icons.notifications,
+                          title: AppLocalizations.of(context).notification,
+                          trailingIcon: CircleAvatar(
+                              radius: 15,
+                              backgroundColor: AppColor.preBase,
+                              child: Text(
+                                "5",
+                                style: TextStyle(color: Colors.white),
+                              )),next: BookerNotificationScreen()
+                              ),                    
                       SizedBox(
                         height: 10,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                        child: InkWell(
-                          onTap: () {
-                            pushNewScreen(
-                              context,
-                              screen: BookerMyRouteScreen(),
-                              withNavBar:
-                                  true, // OPTIONAL VALUE. True by default.
-                              pageTransitionAnimation:
-                                  PageTransitionAnimation.cupertino,
-                            );
-                          },
-                          child: Container(
-                            height: 55,
-                            width: Utils.displayWidth(context),
-                            decoration: BoxDecoration(
-                              color: AppColor.bgScreen,
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: ListTile(
-                              leading: CircleAvatar(
-                                  backgroundColor: Color(0xFFF3F3F3),
-                                  child: Icon(
-                                    FontAwesomeIcons.route,
-                                    color: Color(0xFF525252),
-                                  )),
-                              title: Text(
-                                AppLocalizations.of(context).my_routes,
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color(0xFF525252)),
-                              ),
-                              trailing: Icon(Icons.chevron_right),
-                            ),
+                      profileTilesWidget(
+                          leadingIcon: FontAwesomeIcons.route,
+                          title: AppLocalizations.of(context).my_routes,
+                          trailingIcon: Icon(Icons.chevron_right),
+                          next: ByMap(),
                           ),
-                        ),
-                      ),
                       SizedBox(
                         height: 10,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                        child: InkWell(
-                          onTap: () {
-                            pushNewScreen(
-                              context,
-                              screen: OrderBookerHistory(),
-                              withNavBar:
-                                  true, // OPTIONAL VALUE. True by default.
-                              pageTransitionAnimation:
-                                  PageTransitionAnimation.cupertino,
-                            );
-                          },
-                          child: Container(
-                            height: 55,
-                            width: Utils.displayWidth(context),
-                            decoration: BoxDecoration(
-                              color: AppColor.bgScreen,
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: ListTile(
-                              leading: CircleAvatar(
-                                  backgroundColor: Color(0xFFF3F3F3),
-                                  child: Icon(
-                                    FontAwesomeIcons.list,
-                                    color: Color(0xFF525252),
-                                  )),
-                              title: Text(
-                                AppLocalizations.of(context).order_history,
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color(0xFF525252)),
-                              ),
-                              trailing: Icon(Icons.chevron_right),
-                            ),
+                      profileTilesWidget(
+                          leadingIcon: FontAwesomeIcons.list,
+                          title: AppLocalizations.of(context).order_history,
+                          trailingIcon: Icon(Icons.chevron_right),
+                          next: OrderBookerHistory()
                           ),
-                        ),
-                      ),
+                      // SizedBox(
+                      //   height: 10,
+                      // ),
+                      // profileTilesWidget(
+                      //     leadingIcon: FontAwesomeIcons.store,
+                      //     title: "Home Summary",
+                      //     trailingIcon: Icon(Icons.chevron_right),
+                      //     next: HomeSummaryScreen()
+                      //     ),
                       SizedBox(
                         height: 10,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                        child: InkWell(
-                          onTap: () {
-                            pushNewScreen(
-                              context,
-                              screen: StockAvailability(),
-                              withNavBar:
-                                  true, // OPTIONAL VALUE. True by default.
-                              pageTransitionAnimation:
-                                  PageTransitionAnimation.cupertino,
-                            );
-                          },
-                          child: Container(
-                            height: 55,
-                            width: Utils.displayWidth(context),
-                            decoration: BoxDecoration(
-                              color: AppColor.bgScreen,
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: ListTile(
-                              leading: CircleAvatar(
-                                  backgroundColor: Color(0xFFF3F3F3),
-                                  child: Icon(
-                                    Icons.local_mall,
-                                    color: Color(0xFF525252),
-                                  )),
-                              title: Text(
-                                AppLocalizations.of(context).my_stock,
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color(0xFF525252)),
-                              ),
-                              trailing: Icon(Icons.chevron_right),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                        child: InkWell(
-                          onTap: () {
-                            pushNewScreen(
-                              context,
-                              screen: HomeSummaryScreen(),
-                              withNavBar:
-                                  true, // OPTIONAL VALUE. True by default.
-                              pageTransitionAnimation:
-                                  PageTransitionAnimation.cupertino,
-                            );
-                          },
-                          child: Container(
-                            height: 55,
-                            width: Utils.displayWidth(context),
-                            decoration: BoxDecoration(
-                              color: AppColor.bgScreen,
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: ListTile(
-                              leading: CircleAvatar(
-                                  backgroundColor: Color(0xFFF3F3F3),
-                                  child: Icon(
-                                    FontAwesomeIcons.store,
-                                    color: Color(0xFF525252),
-                                  )),
-                              title: Text(
-                                "Home Summary",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color(0xFF525252)),
-                              ),
-                              trailing: Icon(Icons.chevron_right),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Padding(
+                       Padding(
                         padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                         child: InkWell(
                           onTap: () {},
@@ -462,7 +293,8 @@ class _BookerProfileScreenState extends State<BookerProfileScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 25),
+
+                    SizedBox(height: 25),
                       CustomButton(
                         color: AppColor.preBase,
                         height: 50,
@@ -483,9 +315,8 @@ class _BookerProfileScreenState extends State<BookerProfileScreen> {
                           // );
                         },
                       ),
-                      SizedBox(height: 10),
                       SizedBox(
-                        height: 5.0,
+                        height: 15.0,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 20.0),
@@ -503,6 +334,48 @@ class _BookerProfileScreenState extends State<BookerProfileScreen> {
         ));
   }
 
+  // listtile widgets
+  Widget profileTilesWidget(
+      {IconData leadingIcon, String title, Widget trailingIcon, Widget next}) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+      child: InkWell(
+        onTap: () {
+          pushNewScreen(
+            context,
+            screen: next,
+            withNavBar: true, // OPTIONAL VALUE. True by default.
+            pageTransitionAnimation: PageTransitionAnimation.cupertino,
+          );
+        },
+        child: Container(
+          height: 55,
+          width: Utils.displayWidth(context),
+          decoration: BoxDecoration(
+            color: AppColor.bgScreen,
+            borderRadius: BorderRadius.circular(50),
+          ),
+          child: ListTile(
+            leading: CircleAvatar(
+                backgroundColor: Color(0xFFF3F3F3),
+                child: Icon(
+                  leadingIcon,
+                  color: Color(0xFF525252),
+                )),
+            title: Text(
+              title,
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xFF525252)),
+            ),
+            trailing: trailingIcon,
+          ),
+        ),
+      ),
+    );
+  }
+
   navigate(BuildContext context, Widget screen, bool nav) {
     pushNewScreen(
       context,
@@ -512,6 +385,7 @@ class _BookerProfileScreenState extends State<BookerProfileScreen> {
     );
   }
 
+// signout application
   _signOut() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.remove("accessToken");

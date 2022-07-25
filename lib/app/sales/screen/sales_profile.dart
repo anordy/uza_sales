@@ -426,6 +426,47 @@ class _SalesProfileState extends State<SalesProfile> {
         ));
   }
 
+  // listtile
+  Widget listtileWidget() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+      child: InkWell(
+        onTap: () {
+          pushNewScreen(
+            context,
+            screen: MyRouteScreen(),
+            withNavBar: true, // OPTIONAL VALUE. True by default.
+            pageTransitionAnimation: PageTransitionAnimation.cupertino,
+          );
+        },
+        child: Container(
+          height: 55,
+          width: Utils.displayWidth(context),
+          decoration: BoxDecoration(
+            color: AppColor.bgScreen,
+            borderRadius: BorderRadius.circular(50),
+          ),
+          child: ListTile(
+            leading: CircleAvatar(
+                backgroundColor: Color(0xFFF3F3F3),
+                child: Icon(
+                  FontAwesomeIcons.route,
+                  color: Color(0xFF525252),
+                )),
+            title: Text(
+              AppLocalizations.of(context).my_routes,
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xFF525252)),
+            ),
+            trailing: Icon(Icons.chevron_right),
+          ),
+        ),
+      ),
+    );
+  }
+
   navigate(BuildContext context, Widget screen, bool nav) {
     pushNewScreen(
       context,
@@ -435,6 +476,7 @@ class _SalesProfileState extends State<SalesProfile> {
     );
   }
 
+  // signout in the application
   _signOut() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.remove("accessToken");
@@ -462,6 +504,7 @@ class _SalesProfileState extends State<SalesProfile> {
     );
   }
 
+  // launch whatsapp
   void launchWhatsapp({@required number, @required message}) async {
     String url = "whatsapp://send?phone=$number&text=$message";
     await canLaunch(url) ? launch(url) : print("Whatsapp not installed");

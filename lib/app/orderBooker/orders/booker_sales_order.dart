@@ -11,8 +11,7 @@ import 'package:uza_sales/app/orderBooker/provider/booker_order_provider.dart';
 import 'package:uza_sales/app/retailer/provider/cart_provider.dart';
 import 'package:uza_sales/app/retailer/widget/colors.dart';
 import 'package:uza_sales/app/retailer/widget/utils.dart';
-import 'package:uza_sales/app/sales/pages/sales_payment.dart';
-import 'package:uza_sales/app/sales/provider/salesOrder_provider.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class BookerSalesOrder extends StatefulWidget {
   const BookerSalesOrder({Key key}) : super(key: key);
@@ -303,8 +302,9 @@ class _CreateSalesOrderState extends State<BookerSalesOrder> {
                   ),
                   trailing: TextButton(
                       onPressed: () {
-                        _selectDate(context);
-                        _selectTime(context);
+                        // _selectDate(context);
+                        // _selectTime(context);
+                        _selectDateTimePicker(context);
                       },
                       child: Text('Change',
                           style: TextStyle(
@@ -318,7 +318,7 @@ class _CreateSalesOrderState extends State<BookerSalesOrder> {
                 Padding(
                   padding: EdgeInsets.only(left: 70),
                   child: Text(
-                    "${_dateController.text}, ${_timeController.text}",
+                    "${_dateController.text}",
                     style: TextStyle(
                       color: AppColor.text,
                       fontSize: 13,
@@ -534,37 +534,62 @@ class _CreateSalesOrderState extends State<BookerSalesOrder> {
     );
   }
 
-  // select date
-  Future<Null> _selectDate(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        initialDatePickerMode: DatePickerMode.day,
-        firstDate: DateTime(2015),
-        lastDate: DateTime(2101));
-    if (picked != null)
+// select date time picker
+  _selectDateTimePicker(BuildContext context) {
+    return DatePicker.showDateTimePicker(context,
+        showTitleActions: true,
+        minTime: DateTime(2022, 1, 1),
+        maxTime: DateTime(2030, 1, 1),
+        theme: DatePickerTheme(
+            headerColor: AppColor.bgScreen2,
+            backgroundColor: AppColor.bgScreen2,
+            itemStyle: TextStyle(
+                color: AppColor.sideBase, fontWeight: FontWeight.bold, fontSize: 18),
+            doneStyle: TextStyle(color: AppColor.base, fontSize: 16)),
+        onChanged: (date) {
+      print('change $date in time zone ' +
+          date.timeZoneOffset.inHours.toString());
+    }, onConfirm: (date) {
+      print('confirm $date');
       setState(() {
-        selectedDate = picked;
-        _dateController.text = DateFormat.yMMMd().format(selectedDate);
+        _dateController.text = DateFormat.yMMMMEEEEd().format(date);
       });
+      print('datecontroller: $date');
+    }, currentTime: DateTime.now(), locale: LocaleType.en);
   }
 
+  // select date
+  // Future<Null> _selectDate(BuildContext context) async {
+  //   final DateTime picked = await showDatePicker(
+  //       context: context,
+  //       initialDate: selectedDate,
+  //       initialDatePickerMode: DatePickerMode.day,
+  //       firstDate: DateTime(2015),
+  //       lastDate: DateTime(2101));
+  //   if (picked != null)
+  //     setState(() {
+  //       selectedDate = picked;
+  //       _dateController.text = DateFormat.yMMMd().format(selectedDate);
+  //     });
+  // }
+
   // select time
-  Future<Null> _selectTime(BuildContext context) async {
-    final TimeOfDay picked = await showTimePicker(
-      context: context,
-      initialTime: selectedTime,
-    );
-    if (picked != null)
-      setState(() {
-        selectedTime = picked;
-        _hour = selectedTime.hour.toString();
-        _minute = selectedTime.minute.toString();
-        _time = _hour + ' : ' + _minute;
-        _timeController.text = _time;
-        _timeController.text = formatDate(
-            DateTime(2019, 08, 1, selectedTime.hour, selectedTime.minute),
-            [hh, ':', nn, " ", am]).toString();
-      });
-  }
+  // Future<Null> _selectTime(BuildContext context) async {
+  //   final TimeOfDay picked = await showTimePicker(
+  //     context: context,
+  //     initialTime: selectedTime,
+  //   );
+  //   if (picked != null)
+  //     setState(() {
+  //       selectedTime = picked;
+  //       _hour = selectedTime.hour.toString();
+  //       _minute = selectedTime.minute.toString();
+  //       _time = _hour + ' : ' + _minute;
+  //       _timeController.text = _time;
+  //       _timeController.text = formatDate(
+  //           DateTime(2019, 08, 1, selectedTime.hour, selectedTime.minute),
+  //           [hh, ':', nn, " ", am]).toString();
+  //     });
+  // }
+
 }
