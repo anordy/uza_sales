@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:provider/provider.dart';
+import 'package:uza_sales/app/orderBooker/provider/booker_order_provider.dart';
 import 'package:uza_sales/app/orderBooker/provider/booker_target_provider.dart';
 import 'package:uza_sales/app/orderBooker/widget/booker_daily_target.dart';
 import 'package:uza_sales/app/retailer/widget/colors.dart';
@@ -17,6 +19,12 @@ class HomeSummaryScreen extends StatefulWidget {
 }
 
 TextEditingController _month = TextEditingController();
+String fromStatus = "Today";
+TextEditingController _nowController = TextEditingController();
+TextEditingController _searchController = TextEditingController();
+TextEditingController _today = TextEditingController();
+
+
 var formatter = NumberFormat('#,##,000.00');
 
 class _HomeSummaryScreenState extends State<HomeSummaryScreen> {
@@ -42,35 +50,50 @@ class _HomeSummaryScreenState extends State<HomeSummaryScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 220.0),
-                child: Container(
-                  height: 40,
-                  width: 120,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(color: AppColor.border)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      // mainAxisAlignment:
-                      // MainAxisAlignment.spaceBetween,
-                      children: [
-                        Icon(
-                          Icons.calendar_today,
-                          size: 14,
-                          color: AppColor.preBase,
-                        ),
-                        SizedBox(
-                          width: 10.0,
-                        ),
-                        Text(
-                          "${_month.text}",
-                          style: TextStyle(
-                              fontSize: 12,
-                              color: AppColor.preBase,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                child: InkWell(
+                  onTap: () {
+                      showModalBottomSheet(
+                        backgroundColor: Colors.transparent,
+                        isScrollControlled: true,
+                        context: context,
+                        builder: (context) => fromToBuilder());
+                  },
+                  child: Container(
+                    height: 40,
+                    width: 120,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(color: AppColor.border)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        // mainAxisAlignment:
+                        // MainAxisAlignment.spaceBetween,
+                        children: [
+                          // Icon(
+                          //   Icons.calendar_today,
+                          //   size: 14,
+                          //   color: AppColor.preBase,
+                          // ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          Text(
+                            "$fromStatus",
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: AppColor.preBase,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(width: 25,),
+                            Icon(
+                            FontAwesomeIcons.chevronDown,
+                           color: AppColor.preBase,
+                            size: 15,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -121,7 +144,7 @@ class _HomeSummaryScreenState extends State<HomeSummaryScreen> {
                   children: [    
                           
                     Padding(
-                      padding: const EdgeInsets.only(left: 20.0, right: 50.0),
+                      padding: const EdgeInsets.only(left: 20.0, right: 40.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -132,20 +155,31 @@ class _HomeSummaryScreenState extends State<HomeSummaryScreen> {
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500),
                           ),
-                          Text(
-                            'Target',
-                            style: TextStyle(
-                                color: AppColor.text,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          Text(
-                            'Archived',
-                            style: TextStyle(
-                                color: AppColor.text,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500),
-                          ),
+                          RichText(
+                                text: TextSpan(children: <TextSpan>[
+                                TextSpan(
+                                    text: "Target",
+                                    style: TextStyle(
+                                        color: AppColor.text, fontSize: 16)),
+                                TextSpan(
+                                    text: '(Tzs)',
+                                    style: TextStyle(
+                                        color: Color.fromARGB(255, 103, 103, 103),
+                                        fontSize: 14)),
+                              ])),
+                           RichText(
+                              text: TextSpan(children: <TextSpan>[
+                            TextSpan(
+                                text: "Archived",
+                                style: TextStyle(
+                                    color: AppColor.text, fontSize: 16)),
+                            TextSpan(
+                                text: '(Tzs)',
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 103, 103, 103),
+                                    fontSize: 14)),
+                          ])),
+                        
                         ],
                       ),
                     ),
@@ -205,6 +239,135 @@ class _HomeSummaryScreenState extends State<HomeSummaryScreen> {
     );
   }
 
+
+  Widget makeDismisible({@required Widget child}) => GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () => Navigator.of(context).pop(),
+        child: GestureDetector(
+          onTap: () {},
+          child: child,
+        ),
+      );
+    // filter bottom sheet
+  Widget fromToBuilder() {
+    return makeDismisible(
+      child: DraggableScrollableSheet(
+        initialChildSize: 0.4,
+        minChildSize: 0.4,
+        maxChildSize: 0.4,
+        builder: (_, controller) => Container(
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 35.0, right: 35.0, top: 50),
+            child: ListView(
+              controller: controller,
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              // mainAxisSize: MainAxisSize.min,
+              children: [
+                InkWell(
+                  onTap: () {
+                    print("Past 30 Days");
+                    setState(() {
+                      fromStatus = "Past 30 Days";
+                      var last30Days =
+                          Jiffy().subtract(months: 1).format('yyyy-MM-dd');
+                      print(last30Days);
+
+                    });
+                    Navigator.of(context).pop();
+                  },
+                  child: Text(
+                    "Past 30 days",
+                    style: TextStyle(color: Color(0xFF31373B)),
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Divider(),
+                SizedBox(
+                  height: 15,
+                ),
+                InkWell(
+                  onTap: () {
+                    print("Past 7 Days");
+                    setState(() {
+                      fromStatus = "Past 7 Days";
+                      var last7Days =
+                          Jiffy().subtract(weeks: 1).format('yyyy-MM-dd');
+                      print(last7Days);
+                      
+                    });
+                    Navigator.of(context).pop();
+                  },
+                  child: Text(
+                    "Past 7 Days",
+                    style: TextStyle(color: Color(0xFF31373B)),
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Divider(),
+                SizedBox(
+                  height: 15,
+                ),
+                InkWell(
+                  onTap: () {
+                    print("yesterday");
+                    setState(() {
+                      fromStatus = "yesterday";
+                      var yesterday =
+                          Jiffy().subtract(days: 1).format('yyyy-MM-dd');
+                      print(yesterday);
+                
+                    });
+                    Navigator.of(context).pop();
+                  },
+                  child: Text(
+                    "yesterday",
+                    style: TextStyle(color: Color(0xFF31373B)),
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Divider(),
+                SizedBox(
+                  height: 15,
+                ),
+                InkWell(
+                  onTap: () {
+                    print("Today");
+                    setState(() {
+                      fromStatus = "Today";
+                      _today.text = Jiffy(DateTime.now()).format('yyyy-MM-dd');
+                      print(_today.text);
+                    
+                    });
+                    Navigator.of(context).pop();
+                  },
+                  child: Text(
+                    "Today",
+                    style: TextStyle(color: Color(0xFF31373B)),
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Divider(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+
+// listtile for amount
   Widget amountTile(BuildContext context, String title, String amount,
       String order, Widget icon) {
     return Container(

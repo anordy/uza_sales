@@ -1,9 +1,13 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:uza_sales/app/orderBooker/model/target_pilot_model.dart';
 import 'package:uza_sales/app/retailer/widget/colors.dart';
 import 'package:uza_sales/app/retailer/widget/utils.dart';
+
+
+var formatter = NumberFormat('#,##,000.00');
 
 class BookerDailyTarget extends StatelessWidget {
   final TargetPilot pilots;
@@ -48,7 +52,7 @@ class BookerDailyTarget extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     // maxLines: 2,
                     text: TextSpan(
-                        text: '${pilots.targetAmount}',
+                        text: '${formatter.format(pilots.targetAmount)}',
                         style: TextStyle(color: AppColor.text, fontSize: 16)),
                   ),
                 ),
@@ -65,7 +69,7 @@ class BookerDailyTarget extends StatelessWidget {
                   child: RichText(
                       overflow: TextOverflow.ellipsis,
                       text: TextSpan(
-                          text: '${pilots.archivedTarget}',
+                          text: '${formatter.format(pilots.archivedTarget)}',
                           style:
                               TextStyle(color: AppColor.text, fontSize: 14))),
                 ),
